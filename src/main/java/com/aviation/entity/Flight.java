@@ -7,8 +7,10 @@ public class Flight {
     private String flight_time;
     private String flight_arrive_time;
     private Company company;
+    private String flight_price;
     private String create_time;
     private String update_time;
+    private int seat_count;
 
     @Override
     public String toString() {
@@ -19,9 +21,27 @@ public class Flight {
                 ", flight_time='" + flight_time + '\'' +
                 ", flight_arrive_time='" + flight_arrive_time + '\'' +
                 ", company=" + company +
+                ", flight_price='" + flight_price + '\'' +
                 ", create_time='" + create_time + '\'' +
                 ", update_time='" + update_time + '\'' +
+                ", seat_count=" + seat_count +
                 '}';
+    }
+
+    public String getFlight_price() {
+        return flight_price;
+    }
+
+    public void setFlight_price(String flight_price) {
+        this.flight_price = flight_price;
+    }
+
+    public int getSeat_count() {
+        return seat_count;
+    }
+
+    public void setSeat_count(int seat_count) {
+        this.seat_count = seat_count;
     }
 
     public int getFlight_id() {
