@@ -1,65 +1,51 @@
 package com.aviation.entity;
 
-public class Flight {
-    private int flight_id;
+public class Orders {
+    private int order_id;
     private String flight_start;
     private String flight_end;
     private String flight_start_time;
     private String flight_arrive_time;
-    private Company company;
-    private String flight_price;
+    private String company_name;
+    private String order_price;
     private String flight_time;
     private String create_time;
     private String update_time;
-    private int seat_count;
+    private int order_status;
+    private int uid;
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "flight_id=" + flight_id +
+        return "Orders{" +
+                "order_id=" + order_id +
                 ", flight_start='" + flight_start + '\'' +
                 ", flight_end='" + flight_end + '\'' +
                 ", flight_start_time='" + flight_start_time + '\'' +
                 ", flight_arrive_time='" + flight_arrive_time + '\'' +
-                ", company=" + company +
-                ", flight_price='" + flight_price + '\'' +
+                ", company_name='" + company_name + '\'' +
+                ", order_price='" + order_price + '\'' +
                 ", flight_time='" + flight_time + '\'' +
                 ", create_time='" + create_time + '\'' +
                 ", update_time='" + update_time + '\'' +
-                ", seat_count=" + seat_count +
+                ", order_status=" + order_status +
+                ", uid=" + uid +
                 '}';
     }
 
-    public String getFlight_time() {
-        return flight_time;
+    public int getUid() {
+        return uid;
     }
 
-    public void setFlight_time(String flight_time) {
-        this.flight_time = flight_time;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
-    public String getFlight_price() {
-        return flight_price;
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public void setFlight_price(String flight_price) {
-        this.flight_price = flight_price;
-    }
-
-    public int getSeat_count() {
-        return seat_count;
-    }
-
-    public void setSeat_count(int seat_count) {
-        this.seat_count = seat_count;
-    }
-
-    public int getFlight_id() {
-        return flight_id;
-    }
-
-    public void setFlight_id(int flight_id) {
-        this.flight_id = flight_id;
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
     public String getFlight_start() {
@@ -82,8 +68,8 @@ public class Flight {
         return flight_start_time;
     }
 
-    public void setFlight_start_time(String flight_time) {
-        this.flight_start_time = flight_time;
+    public void setFlight_start_time(String flight_start_time) {
+        this.flight_start_time = flight_start_time;
     }
 
     public String getFlight_arrive_time() {
@@ -94,12 +80,28 @@ public class Flight {
         this.flight_arrive_time = flight_arrive_time;
     }
 
-    public Company getCompany() {
-        return company;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
+    public String getOrder_price() {
+        return order_price;
+    }
+
+    public void setOrder_price(String order_price) {
+        this.order_price = order_price;
+    }
+
+    public String getFlight_time() {
+        return flight_time;
+    }
+
+    public void setFlight_time(String flight_time) {
+        this.flight_time = flight_time;
     }
 
     public String getCreate_time() {
@@ -116,5 +118,13 @@ public class Flight {
 
     public void setUpdate_time(String update_time) {
         this.update_time = update_time;
+    }
+
+    public int getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(int order_status) {
+        this.order_status = order_status;
     }
 }
