@@ -27,7 +27,7 @@ public class UserController {
         Users user = userService.login(u.getUsername(),u.getPassword());
         if(user == null){
             model.addAttribute("errorMsg","用户名或密码错误");
-            return "Login";
+            return "/aviation/Login";
         }else {
             HttpSession session = request.getSession();
 
@@ -42,14 +42,14 @@ public class UserController {
         user.setRole("2");
         if (user.getPassword().equals("")){
             model.addAttribute("errorMsg","密码为空，请输入密码");
-            return "/Register";
+            return "/aviation/Register";
         }
         try {
             userService.register(user);
-            return "/Login";
+            return "/aviation/Login";
         }catch (Exception e){
             model.addAttribute("errorMsg","注册失败(用户名重复)");
-            return "/Register";
+            return "/aviation/Register";
         }
     }
 
@@ -57,7 +57,7 @@ public class UserController {
     public String getUserList(Model model){
         List<Users> usersList = userService.getAllUsers();
         model.addAttribute("userlist",usersList);
-        return "/expressage/allusers";
+        return "/aviation/allusers";
     }
 
     @RequestMapping("/deleteuser")
@@ -76,10 +76,10 @@ public class UserController {
         Users users = userService.getUsers(Integer.parseInt(uid));
         if(users == null){
             model.addAttribute("error","系统异常");
-            return "/expressage/allusers";
+            return "/aviation/allusers";
         }
         model.addAttribute("users",users);
-        return "/expressage/userdetails";
+        return "/aviation/userdetails";
 
     }
 
@@ -89,7 +89,7 @@ public class UserController {
         Users users = (Users)session.getAttribute("user");
         Users u = userService.getUsers(users.getUid());
         model.addAttribute("users",u);
-        return "/expressage/userdetails";
+        return "/aviation/userdetails";
     }
 
     @RequestMapping("/adduser")
@@ -97,7 +97,7 @@ public class UserController {
         int flag = userService.addUser(u);
         if(flag == 0){
             model.addAttribute("error","添加失败");
-            return "/expressage/addusr";
+            return "/aaviation/addusr";
         }else {
             return "redirect:userlist";
         }
@@ -120,14 +120,14 @@ public class UserController {
         if (user.getRole().equals("0")) {
             if (flag == 0) {
                 model.addAttribute("error", "修改失败");
-                return "/expressage/userdetails";
+                return "/aviation/userdetails";
             } else {
                 return "redirect:/userlist";
             }
         }else {
             if (flag == 0) {
                 model.addAttribute("error", "修改失败");
-                return "/expressage/userdetails";
+                return "/aviation/userdetails";
             } else {
                 return "redirect:myinfo";
             }

@@ -14,11 +14,11 @@
     <title> - 登录</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/animate.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/style.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/login.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -34,7 +34,7 @@
 <div class="signinpanel">
     <div class="row">
         <div class="col-sm-12">
-            <form method="post" action="/login">
+            <form method="post" action="/aviation/login">
                 <h2><p class="m-t-md" style="text-align: center;color: #2150ec;">航空售票管理系统</p></h2>
                 <h3 class="no-margins" style="text-align: center">登录</h3>
                 <input type="text" name="username" class="form-control uname" placeholder="用户名" />

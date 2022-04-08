@@ -36,4 +36,4 @@ pagehelper:
   # 打印sql
 logging:
     level:
-       com.expressage.mapper: DEBUG
+       com.aviation.mapper: DEBUG

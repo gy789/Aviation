@@ -18,11 +18,11 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="<%=basePath%>/aviation/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/animate.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 
 <body class="gray-bg">
@@ -64,11 +64,11 @@
 </div>
 
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="<%=basePath%>/aviation/js/jquery.min.js?v=2.1.4"></script>
+<script src="<%=basePath%>/aviation/js/bootstrap.min.js?v=3.3.6"></script>
 
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
+<script src="<%=basePath%>/aviation/js/content.js?v=1.0.0"></script>
 
 
 

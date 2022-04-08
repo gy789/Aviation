@@ -5,6 +5,26 @@ public class Users {
     private String username;
     private String password;
     private String role;
+    private String phone_number;
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                '}';
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
 
     public int getUid() {
         return uid;
@@ -38,13 +58,4 @@ public class Users {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "uid=" + uid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                '}';
-    }
 }

@@ -14,11 +14,11 @@
     <title> - 注册</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/animate.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/style.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/login.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->

@@ -23,4 +23,19 @@ public class PeopleServiceImpl implements PeopleService {
     public int addPeople(People people) {
         return peopleMapper.addPeople(people);
     }
+
+    @Override
+    public int delPeople(int people_id) {
+        return peopleMapper.delPeople(people_id);
+    }
+
+    @Override
+    public People getPeopleInfo(int people_id) {
+        return peopleMapper.getPeopleInfo(people_id);
+    }
+
+    @Override
+    public int updatePeoplieInfo(People people) {
+        return peopleMapper.updatePeoplieInfo(people);
+    }
 }

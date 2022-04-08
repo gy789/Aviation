@@ -5,7 +5,6 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.aviation.entity.Orders;
-import com.aviation.entity.Users;
 import com.aviation.service.OrdersService;
 import com.aviation.util.AlipayConfig;
 import org.springframework.beans.factory.annotation.Autowired;

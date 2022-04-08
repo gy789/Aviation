@@ -22,10 +22,10 @@
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="<%=basePath%>/aviation/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/animate.css" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -82,25 +82,25 @@
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe id="J_iframe" width="100%" height="100%" src="/index_v2" frameborder="0" data-id="index_v1.html" seamless></iframe>
+            <iframe id="J_iframe" width="100%" height="100%" src="<%=basePath%>/aviation/index_v2.jsp" frameborder="0" data-id="index_v1.html" seamless></iframe>
         </div>
     </div>
     <!--右侧部分结束-->
 </div>
 
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="js/plugins/layer/layer.min.js"></script>
+<script src="<%=basePath%>/aviation/js/jquery.min.js?v=2.1.4"></script>
+<script src="<%=basePath%>/aviation/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="<%=basePath%>/aviation/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="<%=basePath%>/aviation/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="<%=basePath%>/aviation/js/plugins/layer/layer.min.js"></script>
 
 <!-- 自定义js -->
-<script src="js/hAdmin.js?v=4.1.0"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script src="<%=basePath%>/aviation/js/hAdmin.js?v=4.1.0"></script>
+<script type="text/javascript" src="<%=basePath%>/aviation/js/index.js"></script>
 
 <!-- 第三方插件 -->
-<script src="js/plugins/pace/pace.min.js"></script>
+<script src="<%=basePath%><%=basePath%>/aviation/js/plugins/pace/pace.min.js"></script>
 
 </body>
 

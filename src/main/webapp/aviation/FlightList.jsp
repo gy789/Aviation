@@ -30,6 +30,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12" >
+                    <form name="aviation" class="form-horizontal m-t" >
+                        <div class="form-group">
+                            <div class="col-sm-3" style="float: right" >
+                                <input type="file" name="file" class="form-control" style="display: none" >
+                                <button class="btn btn-outline btn-link" onclick="document.aviation.file.click()" type="button" style="float: right">
+                                    <i class="fa fa-send"></i>&nbsp;导入模板
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12" >
                     <form class="form-horizontal m-t" >
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -122,6 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- 自定义js -->
     <script src="<%=basePath%>/aviation/js/content.js?v=1.0.0"></script>
+    <script src="<%=basePath%>/aviation/js/MyExpressage.js"></script>
 
     <script>
         //外部js调用

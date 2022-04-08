@@ -18,4 +18,24 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> getAllCompany() {
         return companyMapper.getAllCompany();
     }
+
+    @Override
+    public int addCompany(Company company) {
+        return companyMapper.addCompany(company);
+    }
+
+    @Override
+    public int delCompany(int company_id) {
+        return companyMapper.delCompany(company_id);
+    }
+
+    @Override
+    public Company getCompanyInfo(int company_id) {
+        return companyMapper.getCompanyInfo(company_id);
+    }
+
+    @Override
+    public int updateCompanyInfo(Company company) {
+        return companyMapper.updateCompanyInfo(company);
+    }
 }

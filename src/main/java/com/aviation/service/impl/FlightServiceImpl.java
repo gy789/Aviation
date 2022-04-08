@@ -14,8 +14,8 @@ public class FlightServiceImpl implements FlightService {
     private FlightMapper flightMapper;
 
     @Override
-    public List<Flight> getAllFlight() {
-        return flightMapper.getAllFlight();
+    public List<Flight> getAllFlight(int type,String nowDate) {
+        return flightMapper.getAllFlight(type,nowDate);
     }
 
     @Override
@@ -31,5 +31,10 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public int updateFlight(Flight flight) {
         return flightMapper.updateFlight(flight);
+    }
+
+    @Override
+    public int addFlight(List<Flight> flightList) {
+        return flightMapper.addFlight(flightList);
     }
 }

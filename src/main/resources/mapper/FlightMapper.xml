@@ -3,6 +3,11 @@
 <mapper namespace="com.aviation.mapper.FlightMapper">
     <select id="getAllFlight" resultType="Flight" parameterType="java.util.Map">
         select * from flight
+        <choose>
+            <when test="type == 1">
+                where flight_start_time > #{nowDate}
+            </when>
+        </choose>
     </select>
     <!--<insert id="uregister" parameterType="com.expressage.entity.Users">
         insert into users (username,password,role) value (#{username},#{password},#{role})

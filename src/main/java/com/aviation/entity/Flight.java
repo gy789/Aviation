@@ -1,17 +1,18 @@
 package com.aviation.entity;
 
 public class Flight {
-    private int flight_id;
-    private String flight_start;
-    private String flight_end;
-    private String flight_start_time;
-    private String flight_arrive_time;
-    private Company company;
-    private String flight_price;
-    private String flight_time;
-    private String create_time;
-    private String update_time;
-    private int seat_count;
+    private int flight_id;//航班id
+    private String flight_start;//航班起飞地
+    private String flight_end;//航班终点地
+    private String flight_start_time;//航班起飞时间
+    private String flight_arrive_time;//航班达到时间
+    private String company_name;//航班公司名
+    private String flight_price;//价格
+    private String flight_time;//航班飞行时间
+    private String create_time;//创建时间
+    private String update_time;//更新时间
+    private int seat_count;//座位数
+    private String flight_number;//航班号
 
     @Override
     public String toString() {
@@ -21,13 +22,22 @@ public class Flight {
                 ", flight_end='" + flight_end + '\'' +
                 ", flight_start_time='" + flight_start_time + '\'' +
                 ", flight_arrive_time='" + flight_arrive_time + '\'' +
-                ", company=" + company +
+                ", company_name='" + company_name + '\'' +
                 ", flight_price='" + flight_price + '\'' +
                 ", flight_time='" + flight_time + '\'' +
                 ", create_time='" + create_time + '\'' +
                 ", update_time='" + update_time + '\'' +
                 ", seat_count=" + seat_count +
+                ", flight_number='" + flight_number + '\'' +
                 '}';
+    }
+
+    public String getFlight_number() {
+        return flight_number;
+    }
+
+    public void setFlight_number(String flight_number) {
+        this.flight_number = flight_number;
     }
 
     public String getFlight_time() {
@@ -94,12 +104,12 @@ public class Flight {
         this.flight_arrive_time = flight_arrive_time;
     }
 
-    public Company getCompany() {
-        return company;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
     public String getCreate_time() {

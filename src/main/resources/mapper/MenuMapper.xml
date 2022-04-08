@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aviation.mapper.MenuMapper">
+    <select id="getMenuList" resultType="Menu" parameterType="java.util.Map">
+        select * from menu
+    </select>
+    <insert id="addMenu" parameterType="com.aviation.entity.Menu">
+        insert into menu(href,parent_id,menu_name,role) value (#{href},#{parent_id},#{menu_name},#{role})
+    </insert>
+    <delete id="deleteMenu" parameterType="java.util.Map">
+        delete from menu where menu_name = #{menu_name}
+    </delete>
+
+</mapper>
