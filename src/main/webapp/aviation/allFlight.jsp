@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <link href="<%=basePath%>/aviation/css/animate.css" rel="stylesheet">
     <link href="<%=basePath%>/aviation/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="<%=basePath%>/aviation/css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
 </head>
 
@@ -47,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="col-sm-3">
                                 <label class="col-sm-3 control-label">日期</label>
                                 <div class="col-sm-9">
-                                    <input id="hello" class="laydate-icon form-control layer-date" />
+                                    <input id="date" class="laydate-icon form-control layer-date" />
                                 </div>
                             </div>
                             <div class="col-sm-3">
@@ -77,17 +78,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th>操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="flights">
                                     <c:forEach items="${flightlist}" var="flight">
                                         <tr class="gradeX">
                                             <td>${flight.company_name}</td>
                                             <td>${flight.flight_start}<br>
-                                                ${flight.flight_time}
+                                                ${flight.flight_start_time}
                                             </td>
                                             <td>${flight.flight_end}<br>
                                                 ${flight.flight_arrive_time}
                                             </td>
-                                            <td class="center">${flight.flight_price}</td>
+                                            <td class="center">￥${flight.flight_price}</td>
                                             <td class="center">${flight.seat_count}</td>
                                             <td>
                                                 <a class="btn btn-info btn-rounded" href="<%=basePath%>/aviation/skipflightinfo?flight_id=${flight.flight_id}">抢购</a>
@@ -112,21 +113,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     <!-- 全局js -->
-    <script src="<%=basePath%>/aviation/js/jquery.min.js?v=2.1.4"></script>
-    <script src="<%=basePath%>/aviation/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="<%=basePath%>/aviation/js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="<%=basePath%>aviation/js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=basePath%>aviation/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="<%=basePath%>aviation/js/plugins/jeditable/jquery.jeditable.js"></script>
 
     <!-- Data Tables -->
-    <script src="<%=basePath%>/aviation/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="<%=basePath%>/aviation/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="<%=basePath%>aviation/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="<%=basePath%>aviation/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- 自定义js -->
-    <script src="<%=basePath%>/aviation/js/content.js?v=1.0.0"></script>
-
+    <script src="<%=basePath%>aviation/js/content.js?v=1.0.0"></script>
+    <script src="<%=basePath%>aviation/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="<%=basePath%>aviation/js/Search.js"></script>
+    <script src="<%=basePath%>aviation/js/plugins/toastr/toastr.min.js"></script>
     <script>
         //外部js调用
         laydate({
-            elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            elem: '#date', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
             event: 'focus' //响应事件。如果没有传入event，则按照默认的click
         });
 

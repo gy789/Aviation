@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService {
     public int addUser(Users users) {
         return userMapper.addUser(users);
     }
+
+    @Override
+    public List<Users> getUnBoundUser() {
+        return userMapper.getUnBoundUser();
+    }
 }

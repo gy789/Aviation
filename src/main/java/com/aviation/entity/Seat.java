@@ -2,14 +2,14 @@ package com.aviation.entity;
 
 public class Seat {
     private int seat_id;
-    private int flight_id;
+    private String flight_number;
     private String seat_number;
 
     @Override
     public String toString() {
         return "Seat{" +
                 "seat_id=" + seat_id +
-                ", flight_id=" + flight_id +
+                ", flight_id=" + flight_number +
                 ", seat_number='" + seat_number + '\'' +
                 '}';
     }
@@ -22,12 +22,12 @@ public class Seat {
         this.seat_id = seat_id;
     }
 
-    public int getFlight_id() {
-        return flight_id;
+    public String getFlight_number() {
+        return flight_number;
     }
 
-    public void setFlight_id(int flight_id) {
-        this.flight_id = flight_id;
+    public void setFlight_number(String flight_number) {
+        this.flight_number = flight_number;
     }
 
     public String getSeat_number() {

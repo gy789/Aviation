@@ -8,22 +8,22 @@ public class Msg {
     private int code;
 
     //提示信息
-    private String msg;
+    private String msginfo;
 
     //数据
     private Map<String, Object> info = new HashMap<String, Object>();
 
-    public static Msg success(String msg) {
+    public static Msg success(String msginfo) {
         Msg result = new Msg();
         result.setCode(100);
-        result.setMsg(msg);
+        result.setMsginfo(msginfo);
         return result;
     }
 
-    public static Msg fail(String msg) {
+    public static Msg fail(String msginfo) {
         Msg result = new Msg();
         result.setCode(200);
-        result.setMsg(msg);
+        result.setMsginfo(msginfo);
         return result;
     }
 
@@ -40,12 +40,12 @@ public class Msg {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMsginfo() {
+        return msginfo;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMsginfo(String msginfo) {
+        this.msginfo = msginfo;
     }
 
     public Map<String, Object> getInfo() {

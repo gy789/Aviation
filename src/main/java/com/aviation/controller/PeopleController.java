@@ -8,12 +8,14 @@ import com.aviation.util.Msg;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -44,5 +46,15 @@ public class PeopleController {
             return Msg.success("成功");
         }
         return Msg.fail("失败");
+    }
+
+    @RequestMapping("/peoplelist")
+    public String getPeopleList(Model model,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Users user = (Users)session.getAttribute("user");
+
+        List<People> peopleList = peopleService.getPeopleList(user.getUid());
+        model.addAttribute("peopleList",peopleList);
+        return "aviation/allpeople";
     }
 }

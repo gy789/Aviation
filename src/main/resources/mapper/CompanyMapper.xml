@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aviation.mapper.FlightMapper">
-    <select id="getAllFlight" resultType="Flight" parameterType="java.util.Map">
-        select * from flight
+<mapper namespace="com.aviation.mapper.CompanyMapper">
+    <select id="getCompanyInfo" resultType="Company" parameterType="java.util.Map">
+        select company_number,company_name from company
         <choose>
-            <when test="type == 2">
-                where flight_start_time between #{nowDate} and '23:59:59'
+            <when test="params.type == 1">
+                where uid = #{params.uid}
             </when>
-            <when test="type == 1">
-                where company_name = #{company_name}
+            <when test="type == 2">
+                where company_number = #{params.company_number} group by company_number
             </when>
             <otherwise>
                 where 1 = 1
             </otherwise>
         </choose>
     </select>
-
-    <select id="searchFlight" resultType="Flight" parameterType="java.util.Map">
-        select * from flight where 1 = 1
-            <if test="params.flight_start != ''">
-                and flight_start = #{params.flight_start}
-            </if>
-            <if test="params.flight_end != ''">
-                and flight_end = #{params.flight_end}
-            </if>
-            <if test="params.date == '' and params.date = params.nowdate">
-                and flight_start_time between #{params.nowtime} and '23:59:59'
-            </if>
-
+    
+    <select id="getAllCompany" resultType="Company" parameterType="java.util.Map">
+        select company_number,company_name from company group by company_number
     </select>
+
+    <insert id="addCompany"  parameterType="java.util.Map">
+        insert into company (company_number,company_name,uid) value(#{params.company_number},#{params.company_name},#{params.uid})
+    </insert>
+
+    <delete id="delCompany" parameterType="java.lang.String">
+        delete u from users u,company co where co.company_number = #{company_number} and u.uid = co.uid;
+        delete from company where company_number = #{company_number}
+    </delete>
+
     <!--<insert id="uregister" parameterType="com.expressage.entity.Users">
         insert into users (username,password,role) value (#{username},#{password},#{role})
     </insert>

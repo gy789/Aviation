@@ -40,6 +40,12 @@ public class CreateMenu {
 		sb.append("<div class=\"logo-element\">Aviation");
 		sb.append("</div>");
 		sb.append("</li>");
+		sb.append("<li>\n" +
+				"                        <a class=\"J_menuItem\" href=\"index_v2\">\n" +
+				"                            <i class=\"fa fa-home\"></i>\n" +
+				"                            <span class=\"nav-label\">主页</span>\n" +
+				"                        </a>\n" +
+				"                    </li>");
 
 
 		for(Menu m : menuList) {

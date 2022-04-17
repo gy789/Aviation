@@ -15,8 +15,8 @@ public class PeopleServiceImpl implements PeopleService {
     private PeopleMapper peopleMapper;
 
     @Override
-    public List<People> getPeopleList(int flight_id) {
-        return peopleMapper.getPeopleList(flight_id);
+    public List<People> getPeopleList(int uid) {
+        return peopleMapper.getPeopleList(uid);
     }
 
     @Override

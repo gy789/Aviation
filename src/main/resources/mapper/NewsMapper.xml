@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aviation.mapper.NewsMapper">
+    <select id="getNewsList" resultType="AviationNews" parameterType="java.util.Map">
+        select * from aviationnews  order by update_time desc limit 0,9
+    </select>
+    <select id="getNews" resultType="AviationNews" parameterType="java.util.Map">
+        select * from aviationnews where aviation_news_id = #{aviation_news_id}
+    </select>
+    <insert id="addNews" parameterType="com.aviation.entity.AviationNews">
+        insert into aviationnews(aviation_news_title,aviation_news_info) value(#{aviation_news_title},#{aviation_news_info})
+    </insert>
+    <update id="updateNews" parameterType="com.aviation.entity.AviationNews">
+        update aviationnews set aviation_news_info = #{aviation_news_info},aviation_news_title = #{aviation_news_title}
+        where aviation_news_id = #{aviation_news_id}
+    </update>
+    <delete id="deleteNews" parameterType="java.lang.Integer">
+        delete from aviationnews where aviation_news_id = #{aviation_news_id}
+    </delete>
+</mapper>

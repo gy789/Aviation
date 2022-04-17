@@ -7,7 +7,7 @@ $(document).ready(function () {
             if (bool){
                 $.ajax({
                    type: "POST",
-                   url: "/expressage/deleteuser",
+                   url: "/aviation/deleteuser",
                    data: {
                        uid: uid
                    },
@@ -28,7 +28,7 @@ $(document).ready(function () {
     $('.center').each(function () {
         var role = $(this).text();
         if(role == 1){
-            $(this).text("快递员");
+            $(this).text("航空公司人员");
         }
         else if(role == 0){
             $(this).text("管理员");
@@ -39,7 +39,7 @@ $(document).ready(function () {
     $('.role').each(function () {
         var role = $(this).val();
         if(role == 1){
-            $(this).text("快递员");
+            $(this).text("航空公司人员");
         }
         else if(role == 0){
             $(this).text("管理员");

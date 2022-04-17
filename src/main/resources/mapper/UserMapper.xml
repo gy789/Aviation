@@ -5,7 +5,7 @@
         select * from users where username = #{username} and password = #{password}
     </select>
     <insert id="register" parameterType="com.aviation.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
+        insert into users (username,password,role,phone_number) value (#{username},#{password},#{role},#{phone_number})
     </insert>
     <select id="getAllUsers" resultType="Users" parameterType="java.util.Map">
         select * from users
@@ -20,6 +20,11 @@
         select * from users where uid = #{uid}
     </select>
     <insert id="addUser" parameterType="com.aviation.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
+        insert into users (username,password,role,phone_number) value (#{username},#{password},#{role},#{phone_number})
     </insert>
+
+    <select id="getUnBoundUser" resultType="Users" parameterType="java.util.Map">
+        select * from users
+        where role = 1 and uid not in (select uid from company where uid is not null)
+    </select>
 </mapper>

@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="col-lg-12" >
                     <form class="form-horizontal m-t" >
-                        <div class="form-group">
+                        <%--<div class="form-group">
                             <div class="col-sm-3">
                                 <label class="col-sm-3 control-label">出发地</label>
                                 <div class="col-sm-9">
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
 
 
-                        </div>
+                        </div>--%>
                     </form>
                 </div>
                 <div class="col-sm-12">
@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- 自定义js -->
     <script src="<%=basePath%>/aviation/js/content.js?v=1.0.0"></script>
-    <script src="<%=basePath%>/aviation/js/MyExpressage.js"></script>
+    <script src="<%=basePath%>/aviation/js/plugins/layer/laydate/laydate.js"></script>
 
     <script>
         //外部js调用

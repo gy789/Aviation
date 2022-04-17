@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("flightService")
 public class FlightServiceImpl implements FlightService {
@@ -14,8 +15,13 @@ public class FlightServiceImpl implements FlightService {
     private FlightMapper flightMapper;
 
     @Override
-    public List<Flight> getAllFlight(int type,String nowDate) {
-        return flightMapper.getAllFlight(type,nowDate);
+    public List<Flight> getAllFlight(int type,String nowDate,String company_name) {
+        return flightMapper.getAllFlight(type,nowDate,company_name);
+    }
+
+    @Override
+    public List<Flight> searchFlight(Map<String, Object> params) {
+        return flightMapper.searchFlight(params);
     }
 
     @Override

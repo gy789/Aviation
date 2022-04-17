@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("companyService")
 public class CompanyServiceImpl implements CompanyService {
@@ -20,18 +21,18 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public int addCompany(Company company) {
-        return companyMapper.addCompany(company);
+    public int addCompany(Map<String,Object> params) {
+        return companyMapper.addCompany(params);
     }
 
     @Override
-    public int delCompany(int company_id) {
-        return companyMapper.delCompany(company_id);
+    public int delCompany(String company_number) {
+        return companyMapper.delCompany(company_number);
     }
 
     @Override
-    public Company getCompanyInfo(int company_id) {
-        return companyMapper.getCompanyInfo(company_id);
+    public Company getCompanyInfo(Map<String,Object> params) {
+        return companyMapper.getCompanyInfo(params);
     }
 
     @Override

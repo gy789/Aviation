@@ -1,54 +1,54 @@
 /*删除新闻按钮点击事件*/
 $(document).ready(function () {
+    function getLastToast() {
+        return $toastlast;
+    }
+    $('#cleartoasts').click(function () {
+        toastr.clear();
+    });
+
+    var $toastlast;
+    toastr.options = {
+        "closeButton": "true",
+        "debug": "false",
+        "progressBar": "true",
+        "positionClass": "toast-top-center",
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "7000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+        "onclick": "null"
+    };
+
+
     $('.btn-success').each(function () {
         $(this).click(function () {
-            var expressage_news_id = $(this).children("span").text();
+            var aviation_news_id = $(this).children("span").text();
             var bool = confirm("确定删除？");
             if (bool){
                 $.ajax({
                    type: "POST",
-                   url: "/expressage/delnews",
+                   url: "/aviation/delnews",
                    data: {
-                       expressage_news_id: expressage_news_id
+                       aviation_news_id: aviation_news_id
                    },
                    success: function () {
-                       alert("删除成功");
+                       var $toast = toastr["success"]("删除成功", "成功");
+                       $toastlast = $toast;
                        window.location.reload()
                    },
                    error: function () {
-                       alert("系统异常，删除失败");
+                       var $toast = toastr["error"]("删除失败", "失败");
+                       $toastlast = $toast;
                    }
                 });
             }
         })
     })
 });
-
-/*删除新闻按钮点击事件*/
-$(document).ready(function () {
-    $('.fa-trash-o').each(function () {
-        $(this).click(function () {
-            var expressage_news_id = $(this).children("span").text();
-            var bool = confirm("确定删除？");
-            if (bool){
-                $.ajax({
-                    type: "POST",
-                    url: "/expressage/delnews",
-                    data: {
-                        expressage_news_id: expressage_news_id
-                    },
-                    success: function () {
-                        alert("删除成功");
-                        window.location.reload()
-                    },
-                    error: function () {
-                        alert("系统异常，删除失败");
-                    }
-                });
-            }
-        })
-    })
-});
-
 
 

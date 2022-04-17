@@ -1,6 +1,9 @@
 package com.aviation.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.aviation.entity.Company;
 import com.aviation.entity.Users;
+import com.aviation.service.CompanyService;
 import com.aviation.service.UserService;
 import com.aviation.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -20,6 +25,8 @@ public class UserController {
 
     @Autowired(required = false)
     private UserService userService;
+    @Autowired(required = false)
+    private CompanyService companyService;
 
 
     @RequestMapping("/login")
@@ -57,8 +64,9 @@ public class UserController {
     public String getUserList(Model model){
         List<Users> usersList = userService.getAllUsers();
         model.addAttribute("userlist",usersList);
-        return "/aviation/allusers";
+        return "aviation/allusers";
     }
+
 
     @RequestMapping("/deleteuser")
     @ResponseBody
@@ -71,15 +79,38 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/UnBoundUser")
+    public String UnBoundUser(Model model){
+
+        List<Users> usersList = userService.getUnBoundUser();
+        model.addAttribute("userlist",usersList);
+        return "aviation/unbounduser";
+    }
+
     @RequestMapping("/getusers")
-    public String getusers(@RequestParam("uid")String uid,Model model){
-        Users users = userService.getUsers(Integer.parseInt(uid));
-        if(users == null){
-            model.addAttribute("error","系统异常");
-            return "/aviation/allusers";
+    public String getusers(@RequestParam("uid")String uid,@RequestParam("type")String type, Model model){
+        if (type.equals("1")) {
+            Users users = userService.getUsers(Integer.parseInt(uid));
+            if (users == null) {
+                model.addAttribute("error", "系统异常");
+                return "/aviation/allusers";
+            }
+            model.addAttribute("users", users);
+            return "/aviation/userdetails";
         }
-        model.addAttribute("users",users);
-        return "/aviation/userdetails";
+        else if (type.equals("2")){
+            Users users = userService.getUsers(Integer.parseInt(uid));
+            if (users == null){
+                model.addAttribute("error", "系统异常");
+                return "/aviation/unbounduser";
+            }
+            List<Company> companies = companyService.getAllCompany();
+            model.addAttribute("companylist",companies);
+            model.addAttribute("users", users);
+            return "/aviation/binduser";
+        }else {
+            return "/aviation/404";
+        }
 
     }
 

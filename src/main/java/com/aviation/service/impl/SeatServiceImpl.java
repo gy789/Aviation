@@ -11,7 +11,7 @@ public class SeatServiceImpl implements SeatService {
     private SeatMapper seatMapper;
 
     @Override
-    public int CountSeat(int flight_id) {
-        return seatMapper.CountSeat(flight_id);
+    public int CountSeat(String flight_number) {
+        return seatMapper.CountSeat(flight_number);
     }
 }
