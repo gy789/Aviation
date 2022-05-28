@@ -16,6 +16,10 @@
         </choose>
     </select>
 
+    <select id="getFlightInfo" resultType="Flight" parameterType="java.util.Map">
+        select * from flight where flight_id = #{flight_id}
+    </select>
+
     <select id="searchFlight" resultType="Flight" parameterType="java.util.Map">
         select * from flight where 1 = 1
             <if test="params.flight_start != ''">
@@ -24,27 +28,31 @@
             <if test="params.flight_end != ''">
                 and flight_end = #{params.flight_end}
             </if>
-            <if test="params.date == '' and params.date = params.nowdate">
+            <if test="params.date == '' or params.date == params.nowdate">
                 and flight_start_time between #{params.nowtime} and '23:59:59'
             </if>
 
     </select>
-    <!--<insert id="uregister" parameterType="com.expressage.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
+
+    <insert id="addFlight" parameterType="java.util.List">
+        insert into flight(flight_id,flight_number,flight_start,flight_end,flight_start_time,flight_arrive_time,
+        company_name,flight_price,flight_time,seat_basic_count) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.flight_id},#{item.flight_number},#{item.flight_start},#{item.flight_end},#{item.flight_start_time},#{item.flight_arrive_time},
+            #{item.company_name},#{item.flight_price},#{item.flight_time},#{item.seat_basic_count}
+            )
+        </foreach>
     </insert>
-    <select id="getAllUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users
-    </select>
-    <delete id="deleteUsers" parameterType="com.expressage.entity.Users">
-        delete from users where uid = #{uid}
-    </delete>
-    <update id="updateUser" parameterType="com.expressage.entity.Users">
-        update users set username = #{username},password = #{password}, role = #{role} where uid = #{uid}
+
+    <update id="updateFlight" parameterType="com.aviation.entity.Flight">
+        update flight set flight_number = #{flight_number},flight_start = #{flight_start}, flight_end = #{flight_end},
+        flight_start_time = #{flight_start_time},flight_arrive_time=#{flight_arrive_time},company_name = #{company_name},
+        flight_price = #{flight_price},flight_time = #{flight_time},seat_basic_count = #{seat_basic_count}
+        where flight_id = #{flight_id}
+
     </update>
-    <select id="getUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users where uid = #{uid}
-    </select>
-    <insert id="addUser" parameterType="com.expressage.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
-    </insert>-->
+    <delete id="delFlight" parameterType="java.lang.String">
+        delete from flight where flight_id = #{flight_id}
+    </delete>
+
 </mapper>

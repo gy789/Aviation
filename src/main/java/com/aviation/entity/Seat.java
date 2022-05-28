@@ -4,15 +4,26 @@ public class Seat {
     private int seat_id;
     private String flight_number;
     private String seat_number;
+    private String flight_id;
 
     @Override
     public String toString() {
         return "Seat{" +
                 "seat_id=" + seat_id +
-                ", flight_id=" + flight_number +
+                ", flight_number='" + flight_number + '\'' +
                 ", seat_number='" + seat_number + '\'' +
+                ", flight_id=" + flight_id +
                 '}';
     }
+
+    public String getFlight_id() {
+        return flight_id;
+    }
+
+    public void setFlight_id(String flight_id) {
+        this.flight_id = flight_id;
+    }
+
 
     public int getSeat_id() {
         return seat_id;

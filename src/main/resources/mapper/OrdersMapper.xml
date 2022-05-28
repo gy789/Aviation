@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aviation.mapper.OrdersMapper">
+    <select id="getOrderList" resultType="Orders" parameterType="java.util.Map">
+        select * from orders
+            <if test="params.normal_uid != ''">
+                where uid = #{params.normal_uid}
+            </if>
+            <if test="params.company_name != ''">
+                where company_name = #{params.company_name}
+            </if>
+            <if test="params.admin_user != ''">
+                    where 1 = 1
+            </if>
+    </select>
+
+    <select id="getOrder" resultType="Orders" parameterType="java.util.Map">
+        select * from orders where order_id = #{order_id}
+    </select>
+
+    <update id="updateStatus"  parameterType="java.lang.Integer">
+        <if test="type == 1">
+          update orders set order_status = '已支付' where order_id = #{order_id}
+        </if>
+        <if test="type == 2">
+            update orders set order_status = '已退款' where order_id = #{order_id}
+        </if>
+    </update>
+
+    <insert id="addOrders" parameterType="java.util.List">
+        insert into orders(flight_id,flight_number,flight_start,flight_end,flight_start_time,
+        flight_arrive_time,company_name,order_price,flight_time,uid,flight_date,seat_number) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.flight_id},#{item.flight_number},#{item.flight_start},#{item.flight_end},#{item.flight_start_time},
+            #{item.flight_arrive_time},#{item.company_name},#{item.order_price},#{item.flight_time},#{item.uid},#{item.flight_date},#{item.seat_number}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteOrders" parameterType="java.lang.Integer">
+        delete from orders where order_id = #{order_id}
+    </delete>
+</mapper>

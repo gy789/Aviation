@@ -2,6 +2,8 @@ package com.aviation.entity;
 
 public class Orders {
     private int order_id;
+    private String flight_id;
+    private String flight_number;
     private String flight_start;
     private String flight_end;
     private String flight_start_time;
@@ -11,13 +13,18 @@ public class Orders {
     private String flight_time;
     private String create_time;
     private String update_time;
-    private int order_status;
+    private String order_status;
     private int uid;
+    private String flight_date;
+    private String seat_number;
+    private int people_id;
 
     @Override
     public String toString() {
         return "Orders{" +
                 "order_id=" + order_id +
+                ", flight_id='" + flight_id + '\'' +
+                ", flight_number='" + flight_number + '\'' +
                 ", flight_start='" + flight_start + '\'' +
                 ", flight_end='" + flight_end + '\'' +
                 ", flight_start_time='" + flight_start_time + '\'' +
@@ -29,7 +36,50 @@ public class Orders {
                 ", update_time='" + update_time + '\'' +
                 ", order_status=" + order_status +
                 ", uid=" + uid +
+                ", flight_date='" + flight_date + '\'' +
+                ", seat_number='" + seat_number + '\'' +
+                ", people_id=" + people_id +
                 '}';
+    }
+
+    public int getPeople_id() {
+        return people_id;
+    }
+
+    public void setPeople_id(int people_id) {
+        this.people_id = people_id;
+    }
+
+    public String getSeat_number() {
+        return seat_number;
+    }
+
+    public void setSeat_number(String seat_number) {
+        this.seat_number = seat_number;
+    }
+
+    public String getFlight_date() {
+        return flight_date;
+    }
+
+    public void setFlight_date(String flight_date) {
+        this.flight_date = flight_date;
+    }
+
+    public String getFlight_id() {
+        return flight_id;
+    }
+
+    public void setFlight_id(String flight_id) {
+        this.flight_id = flight_id;
+    }
+
+    public String getFlight_number() {
+        return flight_number;
+    }
+
+    public void setFlight_number(String flight_number) {
+        this.flight_number = flight_number;
     }
 
     public int getUid() {
@@ -120,11 +170,11 @@ public class Orders {
         this.update_time = update_time;
     }
 
-    public int getOrder_status() {
+    public String getOrder_status() {
         return order_status;
     }
 
-    public void setOrder_status(int order_status) {
+    public void setOrder_status(String order_status) {
         this.order_status = order_status;
     }
 }

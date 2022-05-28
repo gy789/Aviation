@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("orderService")
 public class OrdersServiceImpl implements OrdersService {
@@ -15,18 +16,18 @@ public class OrdersServiceImpl implements OrdersService {
     private OrdersMapper ordersMapper;
 
     @Override
-    public int addOrders(Orders orders) {
-        return ordersMapper.addOrders(orders);
+    public int addOrders(List<Orders> ordersList) {
+        return ordersMapper.addOrders(ordersList);
     }
 
     @Override
-    public List<Orders> getOrderList() {
-        return ordersMapper.getOrderList();
+    public List<Orders> getOrderList(Map<String,Object> params) {
+        return ordersMapper.getOrderList(params);
     }
 
     @Override
-    public Orders getOrder(String order_no) {
-        return ordersMapper.getOrder(order_no);
+    public Orders getOrder(int order_id) {
+        return ordersMapper.getOrder(order_id);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public int updateStatus(int order_id) {
-        return ordersMapper.updateStatus(order_id);
+    public int updateStatus(int order_id,int type) {
+        return ordersMapper.updateStatus(order_id,type);
     }
 }

@@ -25,12 +25,12 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight getFlightInfo(int flight_id) {
+    public Flight getFlightInfo(String flight_id) {
         return flightMapper.getFlightInfo(flight_id);
     }
 
     @Override
-    public int delFlight(int flight_id) {
+    public int delFlight(String flight_id) {
         return flightMapper.delFlight(flight_id);
     }
 

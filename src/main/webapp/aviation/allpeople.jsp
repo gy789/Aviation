@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td>${people.people_name}</td>
                                             <td>${people.people_number}</td>
                                             <td>
-                                                <a class="btn btn-info btn-rounded" href="/aviation/getusers?uid=${user.uid}">查看详情</a>
+                                                <a class="btn btn-info btn-rounded" href="/aviation/skippeopleinfo?people_id=${people.people_id}">查看详情</a>
                                                 <a class="btn btn-danger btn-rounded" href="javaScript:void(0)">删除乘客
                                                     <span style="display:none;">${people.people_id}</span></a>
                                                 <font style="color: red">${error}</font>
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- 自定义js -->
     <script src="<%=basePath%>/aviation/js/content.js?v=1.0.0"></script>
-    <script src="<%=basePath%>/aviation/js/User.js"></script>
+    <script src="<%=basePath%>/aviation/js/People.js"></script>
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {

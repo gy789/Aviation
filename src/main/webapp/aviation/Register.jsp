@@ -39,6 +39,7 @@
                 <h3 class="no-margins" style="text-align: center">注册</h3>
                 <input type="text" name="username" class="form-control uname" placeholder="用户名" />
                 <input type="password" name="password" class="form-control pword m-b" placeholder="密码" />
+                <input type="text" name="phone_number" class="form-control" placeholder="手机号" />
                 <font style="color: red">${errorMsg}</font><a href="Login.jsp">登录</a>
                 <button class="btn btn-success btn-block">注册</button>
             </form>

@@ -5,16 +5,16 @@
     <select id="getPeopleList" resultType="People" parameterType="java.util.Map">
         select * from people where uid = #{uid}
     </select>
-    <!--<delete id="deleteUsers" parameterType="com.aviation.entity.Users">
-        delete from users where uid = #{uid}
-    </delete>
-    <update id="updateUser" parameterType="com.aviation.entity.Users">
-        update users set username = #{username},password = #{password}, role = #{role} where uid = #{uid}
-    </update>
-    <select id="getUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users where uid = #{uid}
+    <select id="getPeopleInfo" parameterType="java.lang.Integer" resultType="People">
+        select * from people where people_id = #{people_id}
     </select>
-    <insert id="addUser" parameterType="com.aviation.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
-    </insert>-->
+    <update id="updatePeoplieInfo" parameterType="com.aviation.entity.People">
+        update people set people_name = #{people_name},people_number = #{people_number} where people_id = #{people_id}
+    </update>
+    <delete id="delPeople" parameterType="java.lang.Integer">
+        delete from people where people_id = #{people_id}
+    </delete>
+    <insert id="addPeople"  parameterType="java.util.Map">
+      insert into people(people_name,people_number,uid) value(#{people_name},#{people_number},#{uid})
+    </insert>
 </mapper>

@@ -91,7 +91,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td class="center">￥${flight.flight_price}</td>
                                             <td class="center">${flight.seat_count}</td>
                                             <td>
-                                                <a class="btn btn-info btn-rounded" href="<%=basePath%>/aviation/skipflightinfo?flight_id=${flight.flight_id}">抢购</a>
+                                                <button class="btn btn-info btn-rounded" >抢购
+                                                    <span style="display:none;">${flight.flight_id}</span></button>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -126,6 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=basePath%>aviation/js/plugins/layer/laydate/laydate.js"></script>
     <script src="<%=basePath%>aviation/js/Search.js"></script>
     <script src="<%=basePath%>aviation/js/plugins/toastr/toastr.min.js"></script>
+    <script src="<%=basePath%>aviation/js/Buy.js"></script>
     <script>
         //外部js调用
         laydate({

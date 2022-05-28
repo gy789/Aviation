@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>--%>
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title" style="border-bottom:none;background:#fff;">
                             <h5>服务器状态</h5>
@@ -88,7 +88,7 @@
             <div class="ibox">
                 <c:forEach items="${newslist}" var="news">
                 <div class="ibox-content">
-                    <a href="article.html" class="btn-link">
+                    <a href="/aviation/seanews?aviation_news_id=${news.aviation_news_id}" class="btn-link">
                         <h2>
                             ${news.aviation_news_title}
                         </h2>

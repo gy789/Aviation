@@ -29,22 +29,4 @@
         delete from company where company_number = #{company_number}
     </delete>
 
-    <!--<insert id="uregister" parameterType="com.expressage.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
-    </insert>
-    <select id="getAllUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users
-    </select>
-    <delete id="deleteUsers" parameterType="com.expressage.entity.Users">
-        delete from users where uid = #{uid}
-    </delete>
-    <update id="updateUser" parameterType="com.expressage.entity.Users">
-        update users set username = #{username},password = #{password}, role = #{role} where uid = #{uid}
-    </update>
-    <select id="getUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users where uid = #{uid}
-    </select>
-    <insert id="addUser" parameterType="com.expressage.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
-    </insert>-->
 </mapper>

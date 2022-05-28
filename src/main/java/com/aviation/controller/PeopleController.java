@@ -25,16 +25,16 @@ public class PeopleController {
     private PeopleService peopleService;
 
     @RequestMapping("/addPeople")
-    @ResponseBody
-    public Msg AddPeople(HttpServletRequest request, People people){
+    public String AddPeople(HttpServletRequest request, People people,Model model){
         HttpSession session = request.getSession();
         Users users = (Users)session.getAttribute("user");
         people.setUid(users.getUid());
         int flag = peopleService.addPeople(people);
         if (flag > 0){
-            return Msg.success("成功");
+            return "redirect:/peoplelist";
         }
-        return Msg.fail("失败");
+        model.addAttribute("error","添加失败");
+        return "/aviation/addpeople";
     }
 
     @RequestMapping("/delpeople")
@@ -57,4 +57,28 @@ public class PeopleController {
         model.addAttribute("peopleList",peopleList);
         return "aviation/allpeople";
     }
+
+    @RequestMapping("/uppeople")
+    public String UpdatePeople(Model model,People people){
+        int flag = peopleService.updatePeoplieInfo(people);
+        if(flag > 0){
+            return "redirect:/peoplelist";
+        }
+        model.addAttribute("error","修改失败");
+        return "/aviation/peopleinfo";
+    }
+
+    @RequestMapping("/skippeopleinfo")
+    public String getFlightInfo(Model model, @RequestParam("people_id")String param){
+
+        People people = peopleService.getPeopleInfo(Integer.parseInt(param));
+
+        if (people == null){
+            model.addAttribute("error","系统异常");
+            return "/aviation/allpeople";
+        }
+        model.addAttribute("people",people);
+        return "/aviation/peopleinfo";
+    }
+
 }

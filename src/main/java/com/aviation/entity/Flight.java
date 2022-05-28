@@ -1,7 +1,7 @@
 package com.aviation.entity;
 
 public class Flight {
-    private int flight_id;//航班id
+    private String flight_id;//航班id
     private String flight_start;//航班起飞地
     private String flight_end;//航班终点地
     private String flight_start_time;//航班起飞时间
@@ -11,7 +11,8 @@ public class Flight {
     private String flight_time;//航班飞行时间
     private String create_time;//创建时间
     private String update_time;//更新时间
-    private int seat_count;//座位数
+    private int seat_count;//在线座位数
+    private int seat_basic_count;//在线座位数
     private String flight_number;//航班号
 
     @Override
@@ -28,8 +29,17 @@ public class Flight {
                 ", create_time='" + create_time + '\'' +
                 ", update_time='" + update_time + '\'' +
                 ", seat_count=" + seat_count +
+                ", seat_basic_ount=" + seat_basic_count +
                 ", flight_number='" + flight_number + '\'' +
                 '}';
+    }
+
+    public int getSeat_basic_count() {
+        return seat_basic_count;
+    }
+
+    public void setSeat_basic_count(int seat_basic_count) {
+        this.seat_basic_count = seat_basic_count;
     }
 
     public String getFlight_number() {
@@ -64,11 +74,11 @@ public class Flight {
         this.seat_count = seat_count;
     }
 
-    public int getFlight_id() {
+    public String getFlight_id() {
         return flight_id;
     }
 
-    public void setFlight_id(int flight_id) {
+    public void setFlight_id(String flight_id) {
         this.flight_id = flight_id;
     }
 

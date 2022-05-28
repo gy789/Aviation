@@ -63,14 +63,15 @@ $(document).ready(function () {
                             "                                            <td class=\"center\">￥"+jsonArr[i].flight_price+"</td>\n" +
                             "                                            <td class=\"center\">"+jsonArr[i].seat_count+"</td>\n" +
                             "                                            <td>\n" +
-                            "                                                <a class=\"btn btn-info btn-rounded\" href=\"<%=basePath%>/aviation/skipflightinfo?flight_id="+jsonArr[i].flight_id+"\">抢购</a>\n" +
+                            "                                                <button class=\"btn btn-info btn-rounded\">抢购<span style=\"display:none;\">"+jsonArr[i].flight_id+"</span></button>\n" +
                             "                                            </td>\n" +
                             "                                        </tr>";
                         $("#flights").append(html);
                     }
                 },
                 error: function () {
-                    toastr.success('系统异常');
+                    var $toast = toastr["error"]("系统异常", "异常");
+                    $toastlast = $toast;
                 }
             });
         });

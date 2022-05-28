@@ -2,24 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aviation.mapper.SeatMapper">
     <select id="CountSeat" resultType="java.lang.Integer" parameterType="java.util.Map">
-        select count(seat_id) from seat where flight_number = #{flight_number}
+        select count(seat_id) from seat where seat_number not in
+        (select seat_number from orders where flight_id = #{params.flight_id} and seat_number is not null
+        <if test="params.date == ''">
+        and flight_date = #{params.nowdate})
+        </if>
+        <if test="params.date != ''">
+            and flight_date = #{params.date})
+        </if>
+        and flight_id = #{params.flight_id}
     </select>
-    <!--<insert id="uregister" parameterType="com.expressage.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
+
+    <select id="getSeatList" resultType="Seat" parameterType="java.util.Map">
+        select * from seat where seat_number not in
+        (select seat_number from orders where flight_id = #{params.flight_id} and flight_date = #{params.date} and seat_number is not null)
+        and flight_id = #{params.flight_id}
+    </select>
+
+    <insert id="AddSeat" parameterType="java.util.List">
+        insert into seat(flight_number,seat_number,flight_id) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.flight_number},#{item.seat_number},#{item.flight_id})
+        </foreach>
     </insert>
-    <select id="getAllUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users
-    </select>
-    <delete id="deleteUsers" parameterType="com.expressage.entity.Users">
-        delete from users where uid = #{uid}
-    </delete>
-    <update id="updateUser" parameterType="com.expressage.entity.Users">
-        update users set username = #{username},password = #{password}, role = #{role} where uid = #{uid}
-    </update>
-    <select id="getUsers" resultType="Users" parameterType="java.util.Map">
-        select * from users where uid = #{uid}
-    </select>
-    <insert id="addUser" parameterType="com.expressage.entity.Users">
-        insert into users (username,password,role) value (#{username},#{password},#{role})
-    </insert>-->
+
+
 </mapper>

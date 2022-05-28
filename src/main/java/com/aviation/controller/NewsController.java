@@ -49,7 +49,7 @@ public class NewsController {
     public String updateNews(AviationNews news, Model model, HttpServletRequest request){
         int flag = newsService.updateNews(news);
         if (flag > 0){
-            return "/aviation/AllNews";
+            return "redirect:/newsList";
         }
         return "/aviation/newsdetails";
     }
@@ -60,6 +60,11 @@ public class NewsController {
         model.addAttribute("aviationNews",aviationNews);
         return "/aviation/newsDetails";
     }
-
+    @RequestMapping("/seanews")
+    public String Seanews(Model model,@RequestParam("aviation_news_id")String aviation_news_id){
+        AviationNews aviationNews = newsService.getNews(Integer.parseInt(aviation_news_id));
+        model.addAttribute("news",aviationNews);
+        return "/aviation/article";
+    }
 
 }

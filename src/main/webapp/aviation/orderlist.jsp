@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title> 航班信息</title>
+    <title> 订单信息</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -30,27 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body class="gray-bg">
     <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
-                <div class="col-lg-12" >
-                    <form name="aviation" action="#" class="form-horizontal m-t" >
-                        <div class="form-group">
-                            <div class="col-sm-3" style="float: right" >
-                                <a class="btn btn-outline btn-link" href="<%=basePath%>/aviation/addAviationInfo.jsp" type="button" style="float: right">
-                                    <i class="fa fa-plus"></i>&nbsp;添加航班
-                                </a>
-                                <input type="file" name="file" class="form-control" style="display: none" >
-                                <button class="btn btn-outline btn-link" onclick="document.aviation.file.click()" type="button" style="float: right">
-                                    <i class="fa fa-send"></i>&nbsp;导入数据
-                                </button>
-                            </div>
-
-
-                        </div>
-                    </form>
-                </div>
                 <div class="col-sm-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>航班列表</h5>
+                            <h5>订单列表</h5>
                         </div>
                         <div class="ibox-content">
 
@@ -61,29 +44,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <th>起点</th>
                                             <th>终点</th>
                                             <th>票价</th>
-                                            <th>票数</th>
-                                            <c:if test="${user.role == '1'}">
+                                            <th>日期</th>
+                                            <th>座位</th>
+                                            <th>支付状态</th>
+                                            <c:if test="${sessionScope.user.role == '2'}">
                                             <th>操作</th>
                                             </c:if>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    <c:forEach items="${flightlist}" var="flight">
+                                    <tbody id="flights">
+                                    <c:forEach items="${ordersList}" var="orders">
                                         <tr class="gradeX">
-                                            <td>${flight.company_name}</td>
-                                            <td>${flight.flight_start}<br>
-                                                ${flight.flight_start_time}
+                                            <td>${orders.company_name}</td>
+                                            <td>${orders.flight_start}<br>
+                                                ${orders.flight_start_time}
                                             </td>
-                                            <td>${flight.flight_end}<br>
-                                                ${flight.flight_arrive_time}
+                                            <td>${orders.flight_end}<br>
+                                                ${orders.flight_arrive_time}
                                             </td>
-                                            <td class="center">￥${flight.flight_price}</td>
-                                            <td class="center">${flight.seat_basic_count}</td>
-                                            <c:if test="${user.role == '1'}">
+                                            <td class="center">￥${orders.order_price}</td>
+                                            <td class="center">${orders.flight_date}</td>
+                                            <td class="center">${orders.seat_number}</td>
+                                            <td class="center">${orders.order_status}</td>
+                                            <c:if test="${sessionScope.user.role == '2'}">
                                             <td>
-                                                <a class="btn btn-info btn-rounded" href="/aviation/skipflightinfo?flight_id=${flight.flight_id}">查看详情</a>
-                                                <a class="btn btn-danger btn-rounded" href="javaScript:void(0)">删除航班
-                                                    <span style="display:none;">${flight.flight_id}</span></a>
+                                                <c:choose>
+                                                    <c:when test="${orders.order_status == '未支付'}">
+                                                        <a class="btn btn-info btn-rounded" target="_blank" href="/aviation/alipay?order_id=${orders.order_id}">去支付</a>
+                                                    </c:when>
+                                                    <c:when test="${orders.order_status == '已支付'}">
+                                                        <a class="btn btn-info btn-rounded"  href="/aviation/aliRefund?order_id=${orders.order_id}">退款</a>
+                                                    </c:when>
+                                                </c:choose>
+                                                <a class="btn btn-danger btn-rounded"  href="javaScript:void(0)">删除订单
+                                                    <span style="display:none;">${orders.order_id}</span>
+                                                </a>
+
                                             </td>
                                             </c:if>
                                         </tr>
@@ -95,9 +91,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th>起点</th>
                                     <th>终点</th>
                                     <th>票价</th>
-                                    <th>票数</th>
-                                    <c:if test="${user.role == '1'}">
-                                    <th>操作</th>
+                                    <th>日期</th>
+                                    <th>座位</th>
+                                    <th>支付状态</th>
+                                    <c:if test="${sessionScope.user.role == '2'}">
+                                        <th>操作</th>
                                     </c:if>
                                 </tr>
                                 </tfoot>
@@ -108,25 +106,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     <!-- 全局js -->
-    <script src="<%=basePath%>/aviation/js/jquery.min.js?v=2.1.4"></script>
-    <script src="<%=basePath%>/aviation/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="<%=basePath%>/aviation/js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="<%=basePath%>aviation/js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=basePath%>aviation/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="<%=basePath%>aviation/js/plugins/jeditable/jquery.jeditable.js"></script>
 
     <!-- Data Tables -->
-    <script src="<%=basePath%>/aviation/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="<%=basePath%>/aviation/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="<%=basePath%>aviation/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="<%=basePath%>aviation/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- 自定义js -->
-    <script src="<%=basePath%>/aviation/js/content.js?v=1.0.0"></script>
-    <script src="<%=basePath%>/aviation/js/plugins/layer/laydate/laydate.js"></script>
-    <script src="<%=basePath%>/aviation/js/Upload.js"></script>
-    <script src="<%=basePath%>/aviation/js/Flight.js"></script>
+    <script src="<%=basePath%>aviation/js/content.js?v=1.0.0"></script>
+    <script src="<%=basePath%>aviation/js/plugins/layer/laydate/laydate.js"></script>
     <script src="<%=basePath%>aviation/js/plugins/toastr/toastr.min.js"></script>
-
+    <script src="<%=basePath%>aviation/js/Orders.js"></script>
     <script>
         //外部js调用
         laydate({
-            elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+            elem: '#date', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
             event: 'focus' //响应事件。如果没有传入event，则按照默认的click
         });
 
